@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body{
+			background:url(1.jpg) no-repeat;
+			background-size: 100%;
+		}
+		.child{
+			background: white;
+		    border: 20px solid hsla(0,0%,100%,.5);
+		    /*background-clip: padding-box;*/
+
+		    text-align: center;
+		    font-size: 50px;
+		    position: absolute;
+		    left: 50%;
+		    top: 50%;
+		    transform: translate(-50%,-50%);
+		}
+	</style>
+</head>
+<body>
+	<div class="child">background & border</div>
+</body>
+</html>
+
+<!-- 
+
+盒子的大小 box大小+padding+border
+会从背景中裁出这一块
+所以设置的半透明是在box自身背景色上面叠加
+background-clip默认border-box
+兼容IE9+ 
+
+-->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.child{
+			background: yellowgreen;
+			border-radius: 40px;
+			box-shadow: 0 0 0 15px #655;
+			outline: 10px solid deeppink;
+			width: 300px;
+			height: 300px;
+			text-align: center;
+		    font-size: 50px;
+		    position: absolute;
+		    left: 50%;
+		    top: 50%;
+		    transform: translate(-50%,-50%);
+		}
+	</style>
+</head>
+<body>
+	<div class="child">box-shadow</div>
+</body>
+</html>
+
+<!-- 
+
+box-shadow支持逗号连接多个描边，outline只能一个
+box-shadow会贴合边框，包括圆角，outline只能直角
+
+box-shadow只能实线描边，outline样式多样，位置也可以选，比较灵活
+
+
+box-shadow: h-shadow v-shadow blur spread color inset;
+
+h-shadow	必需。水平阴影的位置。允许负值。	
+v-shadow	必需。垂直阴影的位置。允许负值。	
+blur		可选。模糊距离。	
+spread		可选。阴影的尺寸。	
+color		可选。阴影的颜色。
+inset		可选。将外部阴影 (outset) 改为内部阴影。
+-->
