@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			position: relative;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background: violet;
+			cursor: pointer;
+			display: inline-block;
+			text-align: center;
+		}
+		.border{
+			border: 10px solid transparent;
+			background-clip: padding-box;
+		}
+		.shadow{
+			border: 10px solid transparent;
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, .3) inset;
+			background-clip: padding-box;
+		}
+		.good:before{
+			content: '';
+			position: absolute;
+			top: -10px;
+			bottom: -10px;
+			right: -10px;
+			left: -10px;
+		}
+	</style>
+
+</head>
+<body>
+
+	<div class="none">
+		ok
+	</div>
+	<div class="border">
+		ok
+	</div>
+	<div class="shadow">
+		ok
+	</div>
+	<div class="good">
+		ok
+	</div>
+</body>
+</html>
