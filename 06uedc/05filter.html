@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<style type="text/css">
+		main {
+			transition: .6s filter;
+		}
+		main.show{
+			filter: blur(3px) contrast(.8) brightness(.8);
+		}
+	</style>
+
+</head>
+<body>
+	<main>
+		Bacon Ipsum dolor sit amet.<br>
+		Bacon Ipsum dolor sit amet.<br>
+		Bacon Ipsum dolor sit amet.<br>
+		Bacon Ipsum dolor sit amet.<br>
+		Bacon Ipsum dolor sit amet.<br>
+		Bacon Ipsum dolor sit amet.<br>
+		<button id='btn'>show</button>
+	</main>
+	<dialog>O HAI,I'am a dialog. Click on me to dismiss</dialog>
+	<script>
+		$('#btn').click(() => {
+			$('main').toggleClass('show')
+		})
+	</script>
+</body>
+</html>
