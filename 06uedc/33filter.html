@@ -7,8 +7,14 @@
 		main {
 			transition: .6s filter;
 		}
-		main.show{
+		main.in{
 			filter: blur(3px) contrast(.8) brightness(.8);
+		}
+		dialog{
+			display: none;
+		}
+		.show{
+			display: block;
 		}
 	</style>
 
@@ -26,7 +32,7 @@
 	<dialog>O HAI,I'am a dialog. Click on me to dismiss</dialog>
 	<script>
 		$('#btn').click(() => {
-			$('main').toggleClass('show')
+			$('main').toggleClass('in')
 		})
 	</script>
 </body>

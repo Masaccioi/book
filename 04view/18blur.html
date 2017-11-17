@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		body, main:before{
+			background: url("./../images/tiger.png") 0 / cover fixed;
+		}
+		main {
+			position: relative;
+			background: hsla(0,0%,100%,.3);
+			overflow: hidden;
+			/* filter: blur(1px); */
+
+			/* todo  实现内容自适应水平垂直居中 */
+			width: 50%;
+			margin: auto;
+			margin-top: 200px;
+			text-align: center;
+		    font-size: 50px;
+		}
+		main:before{
+			content: '';
+			position: absolute;
+			top: 0; right: 0;bottom: 0;left: 0;
+			z-index: -1;
+			filter: blur(20px);
+			margin: -30px;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<blockquote>
+			"The only way to get rid of a temptation is to yield to it.
+			Resist it,and your soul grows sick with longing for the things it has forbidden to itself,with des
+			what its monstrous laws have made monstrous and unlawful."
+			<footer>－
+				<cite>
+				WOscar Wilde,
+				The Picture of Dorian Gray
+				</cite>
+			</footer>
+		</blockquote>
+	</main>
+</body>
+</html>
+
+<!-- 
+	设置一层伪元素与内容等大小，背景为图片
+	对该背景图进行blur处理，同时记得设置z-index
+	
+	PS:
+	设置一个blur的值，但如果发现边缘模糊度不够，
+	可以利用伪元素margin负值扩大模糊
+	父层再设置overflow即可
+-->

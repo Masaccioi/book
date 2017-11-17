@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<style type="text/css">
+		.dialog{
+			display: none;
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .3);
+			/* box-shadow: 0 0 0 999px rgba(0, 0, 0, .3); */
+		}
+		.show {
+			display: block;
+		}
+	</style>
+
+</head>
+<body>
+	<div>
+		<input type="text" >
+		<button>ok</button>
+	</div>
+	<div class="dialog">
+		This is a dialog
+	</div>
+	<script>
+		$('button').click(() => {
+			$('.dialog').toggleClass('show')
+		})
+	</script>
+</body>
+</html>
+
+<!-- 
+	使用box-shadow，还可以对其他元素进行点击事件，
+	如果有这样的需求，则可以使用 
+-->

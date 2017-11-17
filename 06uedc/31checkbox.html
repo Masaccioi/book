@@ -3,23 +3,17 @@
 <head>
 	<title></title>
 	<style type="text/css">
-		input[type="checkbox"] + label::before{
+		input[type="checkbox"] + label:before{
 			position: relative;
-			content: '';
+			content: '\a0'; /* 不换行空格 */
 			display: inline-block;
-			vertical-align: .2em;
-			width: .8em;
-			height: .8em;
-			margin-right: .2em;
-			top: .2em;
-			border-radius: .2em;
-			background: silver;
-			text-indent: .15em;
-			line-height: .65em;
-		}
-		input[type="checkbox"]:checked + label:before {
-			content: '\2713';
-			background: yellowgreen;
+			width:21px;
+			height:21px;
+			border-radius: 50%;
+			border: 1px solid #ccc;
+			background: #fff;
+			text-align: center;
+			color: #fff;
 		}
 		input[type="checkbox"]{
 			/* 使用display: none;把它从键盘tab 键切换焦点的队列中完全删除 */
@@ -27,12 +21,17 @@
 			position: absolute;
 			clip: rect(0,0,0,0);
 		}
+		input[type="checkbox"]:checked + label:before {
+			content: '\2713';
+    		background: #108ee9;
+		}
+		
 		label{
 			user-select: none;
 			position: relative;
 		}
 		input[type="checkbox"]:focus + label::before {
-			box-shadow: 0 0 .1em .1em #58a;
+			/* box-shadow: 0 0 .1em .1em #58a; */
 		}
 		input[type="checkbox"]:disabled + label::before {
 			background: gray;
@@ -67,22 +66,23 @@
 </head>
 <body>
 	<input type="text" placeholder="someting" />
-	
+	<br/>
 	<input type="checkbox" id="awesome">
 	<label for="awesome">awesome</label>
-	
+	<br/>
 	<input type="checkbox" checked id="awesome1">
 	<label for="awesome1">checked</label>
-
+	<br/>
 	<input type="checkbox" disabled id="awesome2">
 	<label for="awesome2">disabled</label>
-
+	<br/>
 	<input type="checkbox" disabled checked id="awesome3">
 	<label for="awesome3">disabled checked</label>
+	<br/>
 
-
+<!-- 
 	<input type="checkbox" disabled checked class="switch" id="switch">
-	<label for="switch">switch</label>
+	<label for="switch">switch</label> -->
 
 </body>
 </html>

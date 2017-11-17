@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		a{
+			text-decoration: none;
+		}
+		figure{
+			max-width: 300px;
+			max-width: min-content;
+			max-width: -moz-min-content;
+		}
+		figure > img { 
+			max-width: inherit;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<a href="./02background/01bg&border.html">1.半透明边框<br></a>
+		<figure>
+			<img src="./images/border.png"/>
+			<figcaption>
+				background-clip默认border-box,相当于在背景中从border位置切出一块位置
+				我们希望border是浮在背景之上的，只需要该属性设置为padding-box即可
+			</figcaption>
+		</figure>
+		
+		<a href="./04view/18blur.html">2.毛玻璃效果</a>
+		<figure>
+			<img src="./images/tiger1.png"/>
+			<figcaption>
+				
+			</figcaption>
+		</figure>
+		<a href="./06uedc/30click.html">3.扩大可点击区域</a><br>
+		<a href="./06uedc/31checkbox.html">4.自定义复选框</a><br>
+	</div>
+</body>
+</html>
