@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+    <script>
+        var object = {
+            name: 'joy',
+            get: () => {
+                console.log(this.name)
+            }
+        }
+        for (var keys in object) {
+            console.log(keys)
+        }
+
+    </script>
+</body>
+</html>
+<!-- 
+    hasOwnProperty 方法不会检查原型链
+    for in会遍历一个对象中的所有属性名，包括函数
+-->
