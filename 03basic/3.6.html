@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>test</title>
+</head>
+<body>
+    <script>
+        /**
+        *  3.6.1 if
+        *
+        *
+        */
+        var a = 10
+        if(a > 5) {
+            console.log('if' + a)
+        } else if (a > 7) {
+            console.log('else if' + a)
+        } else {
+            console.log('else' + a)
+        }         
+        // if10
+
+        /**
+        *  3.6.2 for
+        *
+        *
+        */
+        for (;;) { // 无限循环
+            console.log('a');
+        }
+        //for-in 语句是一种精准的迭代语句，可以用来枚举对象的属性
+        for (var propName in window) {
+            document.write(propName);
+        }
+        /**
+        *  3.6.9 switch
+        *  
+        */
+        var i = 25
+        switch (i) {
+            case 25:
+            /* 合并两种情形 */
+            case 35:
+            alert("25 or 35");
+            break;
+            case 45:
+            alert("45");
+            break;
+            default:
+            alert("Other");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>test</title>
+</head>
+<body>
+    <script>
+        /**
+        *  3.4.1 typeof
+        *
+        *
+        */
+
+        // console.log( typeof null) // 'object'
+
+        /**
+        *  3.4.2 undefined  
+        *  使用var 声明变量但未对其加以初始化时，这个变量的值就是undefined
+        *
+        *
+        */
+
+        // var message
+        // console.log( typeof message ) // undefined
+        // console.log(message) //undefined
+        // console.log(age) // 报错，无定义
+        // console.log( typeof age) //undefined
+
+        /**
+        *  3.4.4 Boolean
+        *  使用var 声明变量但未对其加以初始化时，这个变量的值就是undefined
+        *
+        *
+        */
+
+        // var a = 'true', b = 'false'
+        // Boolean(a) //true
+        // Boolean(b) // true
+
+
+
+        /**
+        *  3.4.5 Number
+        *  只有0 除以0 才会返回NaN，正数除以0 返回Infinity，负数除以0 返回-Infinity
+        *   
+        */
+        // var a = 0.1
+        // var b = 0.2
+        // console.log( a + b )  //0.300...04
+        // console.log( a + b == 0.3) //false
+        // isFinite(1513594686982) // true 时间戳  
+
+        // var num1 = parseInt("10", 2); //2 （按二进制解析）
+        // var num2 = parseInt("10", 8); //8 （按八进制解析）
+        // var num3 = parseInt("10", 10); //10 （按十进制解析）
+        // var num4 = parseInt("10", 16); //16 （按十六进制解析）
+
+        // var num1 = parseFloat("1234blue"); //1234 （整数）
+        // var num2 = parseFloat("0xA"); //0
+        // var num3 = parseFloat("22.5"); //22.5
+        // var num4 = parseFloat("22.34.5"); //22.34
+
+
+        /**
+        *  3.4.6 String
+        *  数值、布尔值、对象和字符串值（没错，每个字符串也都有一个toString()方法，
+        *  该方法返回字符串的一个副本）都有toString()方法。但null 和undefined 值没有这个方法
+        *   
+        */
+
+        var num = 10;
+        alert(num.toString()); // "10"
+        alert(num.toString(2)); // "1010"
+        alert(num.toString(8)); // "12"
+        alert(num.toString(10)); // "10"
+        alert(num.toString(16)); // "a"
+    </script>
+</body>
+</html>

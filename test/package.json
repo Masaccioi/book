@@ -1,0 +1,9 @@
+{
+  "name": "meetingtool-word",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nd-datetime": "^3.0.5"
+  }
+}

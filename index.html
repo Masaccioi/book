@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS Tab效果</title>
+</head>
+
+<body>
+    <script>
+        var resolveFun = () => {
+            console.log('resolve')
+        }
+        var rejectFun = () => {
+            console.log('reject')
+        }
+        var promise = new Promise((resolve,reject)=>{
+            resolveFun = resolve
+            rejectFun = reject
+        })
+        // promise.resolve('resolve')
+        // promise.reject('reject')
+        promise.then(()=>{
+            console.log('aa')
+        })
+    </script>
+</body>
+</html>

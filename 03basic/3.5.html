@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>test</title>
+</head>
+<body>
+    <script>
+        /**
+        *  3.5.1 一元操作符
+        *
+        *
+        */
+
+        // var s1 = "01";
+        // var s2 = "1.1";
+        // var s3 = "z";
+        // var b = false;
+        // var f = 1.1;
+        // var o = {
+        // valueOf: function() {
+            //     return -1;
+            // }
+        // };
+        // s1 = +s1; // 值变成数值1
+        // s2 = +s2; // 值变成数值1.1
+        // s3 = +s3; // 值变成NaN
+        // b = +b; // 值变成数值0
+        // f = +f; // 值未变，仍然是1.1
+        // o = +o; // 值变成数值-1
+
+        /**
+        *  3.5.5 加性操作符
+        *
+        *
+        */
+        // var num1 = 5;
+        // var num2 = 10;
+        // var message = "The sum of 5 and 10 is " + num1 + num2;
+        // alert(message);  // "The sum of 5 and 10 is 510"
+        
+        // var result1 = 5 - true; // 4，因为true 被转换成了1
+        // var result2 = NaN - 1; // NaN
+        // var result3 = 5 - 3; // 2
+        // var result4 = 5 - ""; // 5，因为"" 被转换成了0
+        // var result5 = 5 - "2"; // 3，因为"2"被转换成了2
+        // var result6 = 5 - null; // 5，因为null 被转换成了0
+            
+        /**
+        *  3.5.6 关系操作符
+        *  1. ==  != 都会先转换操作数，再比较
+        *    如果有一个操作数是布尔值，则在比较相等性之前先将其转换为数值——false 转换为0，而true 转换为1；
+        *    如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值；
+        *    如果一个操作数是对象，另一个操作数不是，则调用对象的valueOf()方法，用得到的基本类型值按照前面的规则进行比较
+
+        *  2. === !== 未经转换格式
+        */
+        // true == 1 //true
+        // true == 2 //false
+        // null == undefined //true
+        // null == 0 // false
+        // NaN == NaN //false
+        // NaN != NaN //true
+
+        // null === undefined //false
+    </script>
+</body>
+</html>
