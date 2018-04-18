@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <input type='text' id='input' v-model='text'>
+        {{text}}
+    </div>
+    <script>
+        function compile(node, vm){
+            var reg = /\{\{(.*)\}\}/
+            // 节点类型为元素
+            if(node.nodeType === 1){
+                var attr = node.attributes
+                for(var i = 0; i< attr.length; i++) {
+                    if( attr[i].nodeName == 'v-model') {
+                        var name = attr[i].nodeValue
+                        node.value = vm.data[name]
+                        node.removeAttribute('v-model')
+                    }
+                }
+            }
+            if(node.nodeType === 3) {
+                if(reg.test(node.nodeValue)) {
+                    var name = RegExp.$1
+                    name = name.trim()
+                    node.nodeValue = vm.data[name]
+                }
+            }
+        }
+        function nodeToFragment(node,vm) {
+            var flag = document.createDocumentFragment()
+            var child 
+            while (child = node.firstChild) {
+                compile(child, vm)
+                // 通过 append 方法，DOM 中的节点会被自动删除，将挂载目标的所有子节点劫持到documentfragment中
+                flag.append(child)
+            }
+            return flag
+        }
+
+        function Vue(options) {
+            this.data = options.data
+            var id = options.el
+            var dom = nodeToFragment(document.getElementById(id),this)
+            // 将 DocumentFragment 整体返回插入挂载目标            
+            document.getElementById(id).appendChild(dom)
+        }
+        var vm = new Vue({
+            el: 'app',
+            data: {
+                text:'hello world'
+            }
+        })
+    </script>
+</body>
+</html>

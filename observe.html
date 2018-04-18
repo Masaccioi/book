@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       var salesOffices = {}
+       salesOffices.clientList = {}
+       salesOffices.listen = function(key,fn){
+           this.clientList[key] = fn
+       }
+       salesOffices.trigger = function(){
+            var key = Array.prototype.shift.call( arguments )
+           
+            this.clientList[key].apply(this, arguments)
+       }
+       salesOffices.listen('a',function(price){
+            console.log('price= '+ price)
+       })
+       salesOffices.listen('b',function(squareMeter){
+            console.log('squareMeter= '+ squareMeter)
+       })
+       salesOffices.trigger('a',111)
+       salesOffices.trigger('b','aaa')
+   </script>
+</body>
+</html>

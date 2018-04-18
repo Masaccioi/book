@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type='text' id='input' value='1'>
+    <span id='span'></span>
+    <script>
+    // 访问器属性的会"覆盖"同名的普通属性，因为访问器属性会被优先访问，与其同名的普通属性则会被忽略
+    // easy
+    var obj = {}
+    Object.defineProperty(obj,'twoWay', {
+        set: function(newValue) {
+            document.getElementById('input').value = newValue
+            document.getElementById('span').innerHTML = newValue
+        }
+    })
+    document.addEventListener('keyup',function(e){
+        obj.twoWay = e.target.value
+    })
+    </script>
+</body>
+</html>
