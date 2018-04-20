@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    span{
+        background: lightblue;
+        width: 20px;
+        line-height: 15px;
+    }
+    </style>
 </head>
 <body>
     <div id='app'>
         <input type='text' id='input' v-model='text'>
-        <button v-click='increment'>increment</button>
+        <p v-bind='text'></p>
         {{text}}
+        <br/>
+        <button v-click='increment'>increment</button>
+        {{count}}
     </div>
     <script>
     //    发布者发出通知 => 主题对象收到通知并推送给订阅者 => 订阅者执行相应操作
@@ -52,45 +62,57 @@
                             vm[name] = e.target.value
                         })
                         node.value = vm[name]
-                        node.removeAttribute('v-model')
-                    } else if( attr[i].nodeName == 'v-click') {
+                        // node.removeAttribute('v-model')
+                    } 
+                    if( attr[i].nodeName == 'v-click') {
                         var attrVal = attr[i].nodeValue
                         node.onclick = function(e){
                             _this.parseFunc(attrVal,vm)()
                         }
                     }
+
+                    if(attr[i].nodeName == 'v-bind') {
+                        var name = attr[i].nodeValue
+                        if(node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
+                            node.value = vm[name]
+                        } else {
+                            node.innerHTML = vm[name]               
+                        }
+                    }
                 }
-                new Watcher(vm, node, name, 'input');
+                new Watcher(vm, node, name)
             }
             if(node.nodeType === 3) {
                 if(reg.test(node.nodeValue)) {
                     var name = RegExp.$1
                     name = name.trim()
                     node.nodeValue = vm[name]
+                    // 这样修改某一个值的时候，只会更新对应的值，而不会重新渲染dom
                     new Watcher(vm, node, name)
                 }
             }
         }
-        function Watcher(vm,node,name, type) {
+        function Watcher(vm,node,name) {
             Dep.target = this
             this.name = name
             this.node = node
-            this.nodeType = type || ''
             this.vm = vm
             this.update()
             Dep.target = null
         }
         Watcher.prototype = {
             update: function() {
-                this.get()
-                if(this.nodeType === 'input') {
-                    this.node.value = this.value
-                } else {
-                    this.node.nodeValue = this.value                    
-                }
-            },
-            get: function(){
                 this.value = this.vm[this.name]
+                if(this.node.nodeType === 1) {
+                    if(this.node.tagName === 'INPUT' || this.node.tagName === 'TEXTAREA') {
+                        this.node.value = this.value
+                    } else {
+                        this.node.innerHTML = this.value                    
+                    }
+                }
+                if(this.node.nodeType === 3) {
+                    this.node.nodeValue = this.value 
+                }
             }
         }
         function Dep() {
@@ -142,11 +164,12 @@
         var vm = new Vue({
             el: 'app',
             data: {
-                text:0
+                text:'hello world',
+                count: 0
             },
             methods:{
                 increment:function(){
-                    this.text++
+                    this.count++
                 }
             }
         })

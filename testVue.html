@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        {{text}}<br />
+        <button @click='increment'>increment</button>
+        {{count}}
+    </div>
+    <script src='./vue/dist/vue.js'></script>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                count:0,
+                text:'hello world',
+                arr:[1,2,3,4],
+                obj:{
+                    name:'obj',
+                    age:20
+                }
+            },
+            methods:{
+                increment:function(){
+                    this.count++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

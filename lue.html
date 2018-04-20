@@ -24,7 +24,6 @@
             this.$data=options.data;                            //实例的数据域
             this.$methods=options.methods;                      //实例的函数域
             this._parseData(this.$data)
-            this._parseFunc('alert("aaa")')
         };
         Lue.prototype.defineReactive=function(key,val){
             Object.defineProperty(this.$data, key,{
