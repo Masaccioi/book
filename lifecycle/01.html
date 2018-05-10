@@ -13,83 +13,117 @@
     <div id='app'></div>
     <script type="text/babel">
       class Parent extends React.Component {
-				constructor(props){
-					super(props)
-					this.state = {
-						count: 0,
-						name:'a'
-					}
-					console.log('parent constructor function')
-				}
-				componentDidMount() {
-					console.log('parent componentDidMount function')					
-				}
-				getDerivedStateFromProps(nextProps, prevState){
-					console.log('parent getDerivedStateFromProps function')
-					console.log(nextProps, prevState)
-				}
-				shouldComponentUpdate() {
-
-				}
-				componentWillMount() {
-					console.log('parent componentWillMount function')
-				}
-				onHandleChangeState(){
-					console.log('=========changeState========')
-					this.setState((prevState) => {
-						prevState++
-					})
-				}
-				onHandleChangeChildProps(){
-					console.log('=========changeChildProps========')					
-					this.setState({name: 'b'})
-				}
-				onHandleUnmount(){
-					console.log('=========unmount========')
-					ReactDOM.unmountComponentAtNode(document.getElementById('app'))	
-				}
-				render() {
-					console.log('parent render')					
-					return (
-						<div>
-							<button onclick={this.onHandleChangeState}>changeState</button>
-							<button onclick={this.onHandleChangeChildProps}>changeChildProps</button>
-							<button onclick={this.onHandleUnmount}>Unmount</button>
-							<span>{this.state.count}</span><button onclick={this.onHandleChange}>change value</button>
-							<Child name={this.state.name}/>
-						</div>
-					)
-				}
-      }
-			class Child extends React.Component {
-				constructor(props){
-					super(props)
-					console.log('child constructor function')
-				}
-				componentDidMount(){
-					console.log('child componentDidMount function')					
-				}
-				getDerivedStateFromProps(nextProps, prevState){
-					console.log('child getDerivedStateFromProps function')
-					console.log(nextProps, prevState)
-				}
-				componentWillMount() {
-					console.log('child componentWillMount function')
-				}
-				UNSAFE_componentWillReceiveProps() {
-					console.log('child UNSAFE_componentWillReceiveProps function')					
-				}
-				render() {
-					console.log('child render')
-					return (
-						<h2>I'm child {this.props.value}</h2>
-					)
-				}
+		constructor(props){
+			super(props)
+			this.state = {
+				count: 0,
+				name:'a'
 			}
-			ReactDOM.render(
-				<Parent/>,
-				document.getElementById('app')
+			this.onHandleChangeChildProps = this.onHandleChangeChildProps.bind(this)
+			this.onHandleChangeState = this.onHandleChangeState.bind(this)
+			this.onHandleUnmount = this.onHandleUnmount.bind(this)
+			console.log('parent constructor function')
+		}
+		getDerivedStateFromProps(nextProps, prevState){
+			console.log('parent getDerivedStateFromProps function')
+			console.log(nextProps, prevState)
+		}
+		componentDidMount() {
+			console.log('parent componentDidMount function')					
+		}
+		componentWillReceiveProps(){
+			console.log('parent componentWillReceiveProps function')								
+		}
+		shouldComponentUpdate(nextProps, nextState) {
+			console.log('parent shouldComponentUpdate function')
+			console.log('shouldComponentUpdate',nextProps, nextState)			
+		}
+		componentWillUpdate(){
+			console.log('parent componentWillUpdate function')
+		}
+		getSnapshotBeforeUpdate(){
+			console.log('parent getSnapshotBeforeUpdate function')			
+		}
+		componentDidUpdate(){
+			console.log('parent   function')			
+		}
+		componentWillMount() {
+			console.log('parent componentWillMount function')
+		}
+		onHandleChangeState(){
+			console.log('=========changeState========')
+			this.setState(prevState => ({
+				count:prevState.count + 1
+			}))
+		}
+		onHandleChangeChildProps(){
+			console.log('=========changeChildProps========')					
+			this.setState({name: 'b'})
+		}
+		onHandleUnmount(){
+			console.log('=========unmount========')
+			ReactDOM.unmountComponentAtNode(document.getElementById('app'))	
+		}
+		render() {
+			console.log('parent render')					
+			return (
+				<div>
+					<button onClick={this.onHandleChangeState}>changeState</button> <span>{this.state.count}</span><br />
+					<button onClick={this.onHandleChangeChildProps}>changeChildProps</button><br />
+					<button onClick={this.onHandleUnmount}>Unmount</button><br />
+					<span>{this.state.name}</span>
+					<Child name={this.state.name}/>
+				</div>
 			)
+		}
+	}
+	class Child extends React.Component {
+		constructor(props){
+			super(props)
+			this.state = {
+				name: this.props.name
+			}
+			console.log('child constructor function')
+		}
+		getDerivedStateFromProps(nextProps, prevState){
+			console.log('child getDerivedStateFromProps function')
+			console.log(nextProps, prevState)
+		}
+		componentDidMount() {
+			console.log('child componentDidMount function')					
+		}
+		componentWillReceiveProps(nextProps){
+			console.log('child componentWillReceiveProps function')
+			console.log('componentWillReceiveProps', nextProps)					
+		}
+		shouldComponentUpdate(nextProps, nextState) {
+			console.log('child shouldComponentUpdate function')
+			console.log('shouldComponentUpdate',nextProps, nextState)
+			
+		}
+		componentWillUpdate(){
+			console.log('child componentWillUpdate function')
+		}
+		getSnapshotBeforeUpdate(){
+			console.log('child getSnapshotBeforeUpdate function')			
+		}
+		componentDidUpdate(){
+			console.log('child componentDidUpdate function')			
+		}
+		componentWillMount() {
+			console.log('child componentWillMount function')
+		}
+		render() {
+			console.log('child render')
+			return (
+				<h2>I'm child {this.props.name}</h2>
+			)
+		}
+	}
+	ReactDOM.render(
+		<Parent/>,
+		document.getElementById('app')
+	)
     </script>
 </body>
 </html>
