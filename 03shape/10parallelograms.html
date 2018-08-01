@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.button{
+			position: relative;
+			width: 300px;
+			padding-left: 2em;
+		}
+		.button:before{
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: tan;
+			z-index: -1;
+			transform: skewX(-45deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="button">
+		this is a good book<br />
+		i real like it<br />
+		why is not what i want
+	</div>
+</body>
+</html>

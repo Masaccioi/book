@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.picture{
+			width: 400px;
+			height: 400px;
+			transform: rotate(45deg);
+			overflow: hidden;
+		}
+		.picture > img{
+			max-width: 100%;
+			clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+			/* transform: rotate(-45deg) scale(2.4); */
+			transition: 1s clip-path;
+			/* clip-path可以很好的适应非正方形 */
+		}
+	</style>
+</head>
+<body>
+	<div class="picture">
+		<img src="tiger.png" alt="tiger"/>
+	</div>
+</body>
+</html>
